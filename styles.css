@@ -4,15 +4,6 @@ body {
     color: #FFFFFF;
 }
 
-header .logo {
-    height: 54px;
-}
-
-header .menu-logo {
-    width: 32px;
-    height: 32px;
-}
-
 header {
     position: sticky;
     top: 0;
@@ -27,13 +18,68 @@ header {
     align-items: center;
 }
 
-.category .tag {
-    height: 40px;
-    border-radius: 9px;
-    padding: 0 16px;
-    background: rgba(255, 255, 255, 0.5);
-    line-height: 40px;
-    margin-right: 10px;
+header .logo {
+    height: 54px;
+}
+
+header .menu-logo {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+header .menu-logo:hover { /* Added hover effect */
+    transform: scale(1.2);
+} 
+header .mobile-menu { /* Added mobile menu */
+    display: flex; 
+    position: absolute;
+    top: 70px; 
+    left: 0;
+    width: 100%;
+    background-color: #11152C; 
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #858585;
+    z-index: 99; 
+
+    /* появление при нажатии */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.4 ease;
+}
+header .mobile-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 18px;
+}
+header .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+header .tittle-header {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+main .category .tag {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #858585; /* Цвет как у полоски в хедере */
+    border-radius: 9px;        /* Твой радиус из кода */
+    background: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .category {
@@ -44,8 +90,10 @@ header {
     justify-content: space-between;
 }
 
-.category .tag.active {
-    background: #2563eb
+.category .tag:hover {
+    background: #11152C;
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
 }
 
 footer {
@@ -72,8 +120,9 @@ footer .list-documents li {
     text-align: center;
 }
 
-a {
+footer a {
     text-decoration: none;
+    color: #FFFFFF
 }
 
 a:hover {

@@ -10,17 +10,31 @@
     
     <header>
         <img src="images/heart.svg" alt="lopataqq-logo" class="logo">
-        <img src="images/burger-menu.svg" alt="menu-icon" class="menu-logo">
+
+        <div class="tittle-header">lopataqq</div>
+
+        <img src="images/burger-menu.svg" 
+        alt="menu"
+        class="menu-logo"
+        id="burger-btn"> <!-- кнопка всплывающего меню -->
+
+        <div class="mobile-menu" id="mobile-menu"> <!-- всплывающее меню -->
+          <a href="#">About</a> 
+          <a href="#">Projects</a> 
+          <a href="#">Contact</a> 
+          <a href="#">Github</a> 
+      </div>
     </header>
 
     <main>
         <div class = "category">
-            <div class="tag active">About</div>
-            <div class="tag">Projects</div>
-            <div class="tag">Contact</div>
-            <div class="tag">Github</div>
-            <div class="tag">Blog</div>
+            <button class="tag" type="button">Информация</button>
+            <button class="tag" type="button">Проекты</button>
+            <button class="tag" type="button">Контакты</button>
+            <button class="tag" type="button">Блог</button>
         </div>
+        
+        <div>test</div>
     </main>
 
     <footer>
@@ -51,6 +65,6 @@
             © 2026 lopataqq. Все права защищены.
         </div>
     </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
