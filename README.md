@@ -5,6 +5,7 @@
 ## Технологии
 - HTML5
 - CSS3
-
+- JavaScript
+  
 ## Ссылка
-https://lopataqq.github.io/test/
+https://lopataqq.github.io/my-first-site/
