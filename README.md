@@ -7,4 +7,4 @@
 - CSS3
 
 ## Ссылка
-https://lopataqq.github.io/my-first-site/
+https://lopataqq.github.io/test/
