@@ -14,17 +14,17 @@
             <span class="tittle-header">lopataqq</span>
         </div>
         <nav class="header-nav">
-            <button class="tag" type="button">Информация</button>
-            <button class="tag" type="button">Проекты</button>
-            <button class="tag" type="button">Контакты</button>
-            <button class="tag" type="button">Блог</button>
+            <a href="#" class="tagurl" alt="mainpage">На главную страницу</a> <!-- якорь на главную страницу -->
+            <a href="#projects" class="tagurl" alt="projects">Проекты</a> <!-- якорь на секцию проектов -->
+            <a href="#phonenumber" class="tagurl" alt="contacti">Контакты</a> <!-- якорь на контактную информацию в футере -->
+            <a href="https://github.com/lopataqq" target="_blank" class="tagurl" alt="github">Github</a> <!-- ссылка на GitHub, при нажатии открывает новую вкладку -->
         </nav>
-        <img src="images/burger-menu.svg" alt="меню" class="menu-logo" id="burger-btn">
-        <div class="mobile-menu" id="mobile-menu">
+        <img src="images/burger-menu.svg" alt="меню" class="menu-logo" id="burger-btn"> <!-- кнопка бургер-меню -->  
+        <div class="mobile-menu" id="mobile-menu"> <!-- мобильное меню в хедере -->
             <a href="#">About</a>
-            <a href="#">Projects</a>
-            <a href="#">Contact</a>
-            <a href="#">Github</a>
+            <a href="#projects">Projects</a> <!-- якорь на секцию проектов -->
+            <a href="#phonenumber">Contact</a> <!-- якорь на контактную информацию в футере -->
+            <a href="https://github.com/lopataqq" target="_blank" alt="github">Github</a> <!-- ссылка на GitHub, при нажатии открывает новую вкладку -->
         </div>
     </header>
 
@@ -36,7 +36,7 @@
                 <span class="skill-tag">HTML5</span>
                 <span class="skill-tag">CSS3</span>
                 <span class="skill-tag">JavaScript</span>
-                <!-- Добавь свои: Git, React, Figma и т.д. -->
+                <!-- в будующем добавление скиллов-->
             </div>
         </section>
 
@@ -61,7 +61,7 @@
         </section>
 
         <section class="projects-section main-block" id="projects">
-            <h2 class="section-title">Проекты</h2>
+            <h2 class="section-title" id="projects">Проекты</h2>
             <p class="section-desc">Ссылки на работы и репозитории</p>
             <div class="projects-grid">
                 <a href="https://github.com/lopataqq/mini-project-checkuser" class="project-card" target="_blank" rel="noopener">
@@ -93,7 +93,7 @@
             </li>
         </ul>
         <div class="contact">
-            <h3>Контактная информация</h3>
+            <h3 id="phonenumber">Контактная информация</h3>
             <ul>
                 <li>
                     <a href="#">Телефон: +380 63 63 63 633</a>
