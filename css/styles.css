@@ -1,18 +1,35 @@
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
-    --bg: #11152C;
+    --bg-dark: #11152C;
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --text-secondary: #555555;
+    --btn-bg: #f0f0f0;
+    --border: #d0d0d0;
+    --card-bg: #f8f8f8;
+    --card-hover: #eeeeee;
+    --card-hover-border: rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode {
+    --bg-color: var(--bg-dark);
+    --text-color: #f5f5f5;
+    --text-secondary: rgba(255, 255, 255, 0.75);
+    --btn-bg: #333333;
     --border: #858585;
     --card-bg: rgba(255, 255, 255, 0.03);
     --card-hover: rgba(255, 255, 255, 0.06);
     --card-hover-border: rgba(255, 255, 255, 0.5);
 }
-html {
-  scroll-behavior: smooth;
-}
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg);
-    color: #FFFFFF;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header {
@@ -23,11 +40,12 @@ header {
     padding: 0 12px;
     height: 70px;
     border-bottom: 1px solid var(--border);
-    background: var(--bg);
+    background: var(--bg-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 header .header-brand {
@@ -57,7 +75,12 @@ header .menu-logo {
     cursor: pointer;
     transition: transform 0.3s;
 }
-header .menu-logo:hover { /* Added hover effect */
+
+body:not(.dark-mode) header .menu-logo {
+    filter: invert(1);
+}
+
+header .menu-logo:hover {
     transform: scale(1.2);
 } 
 header .mobile-menu {
@@ -66,7 +89,7 @@ header .mobile-menu {
     top: 70px;
     left: 0;
     width: 100%;
-    background-color: var(--bg);
+    background-color: var(--bg-color);
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
@@ -85,35 +108,19 @@ header .mobile-menu.open {
 }
 
 header .mobile-menu a {
-    color: #FFF;
+    color: var(--text-color);
     text-decoration: none;
     padding: 15px;
     font-size: 18px;
 }
 
-
 header .tittle-header {
     font-size: 24px;
     font-weight: bold;
+    color: var(--text-color);
 }
 
-header .header-nav .tag {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    min-height: 36px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--card-bg);
-    color: #FFF;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
+header .header-nav .tag,
 header .header-nav .tagurl {
     display: inline-flex;
     align-items: center;
@@ -123,15 +130,27 @@ header .header-nav .tagurl {
     border: 1px solid var(--border);
     border-radius: 10px;
     background: var(--card-bg);
-    color: #FFF;
+    color: var(--text-color);
     font-size: 14px;
     font-weight: 500;
     transition: all 0.3s ease;
     cursor: pointer;
+    white-space: nowrap;
     text-decoration: none;
 }
 
-header .header-nav .tag:hover {
+.theme-btn {
+    background-color: var(--btn-bg);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+header .header-nav .tag:hover,
+header .header-nav .tagurl:hover {
     background: var(--card-hover);
     border-color: var(--card-hover-border);
     transform: translateY(-1px);
@@ -152,24 +171,22 @@ main .section-title {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #FFF;
+    color: var(--text-color);
 }
 
 main .section-desc {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     margin-bottom: 24px;
 }
 
-/* About section */
 main .about-intro {
     font-size: 17px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     margin-bottom: 32px;
 }
 
-/* Skills section */
 main .skills-list {
     display: flex;
     flex-wrap: wrap;
@@ -177,14 +194,22 @@ main .skills-list {
 }
 
 main .skill-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 10px 18px;
     border: 1px solid var(--border);
     border-radius: 10px;
     background: var(--card-bg);
     font-size: 14px;
     font-weight: 500;
-    color: #FFF;
+    color: var(--text-color);
+}
+
+main .skill-tag .skill-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 main .skill-tag:hover {
@@ -192,7 +217,6 @@ main .skill-tag:hover {
     background: var(--card-hover);
 }
 
-/* Certificates & Projects — общие стили карточек-ссылок */
 main .certificates-list {
     list-style: none;
     padding: 0;
@@ -211,7 +235,7 @@ main .project-card {
     border: 1px solid var(--border);
     border-radius: 12px;
     background: var(--card-bg);
-    color: #FFF;
+    color: var(--text-color);
     text-decoration: none;
     transition: all 0.25s ease;
 }
@@ -231,15 +255,15 @@ main .cert-title {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 4px;
+    color: var(--text-color);
 }
 
 main .cert-issuer {
     display: block;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-secondary);
 }
 
-/* Projects */
 main .projects-grid {
     display: flex;
     flex-direction: column;
@@ -250,24 +274,24 @@ main .project-name {
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 8px;
-    color: #FFF;
+    color: var(--text-color);
 }
 
 main .project-desc {
     font-size: 14px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     margin: 0 0 10px;
 }
 
 main .project-link-text {
     font-size: 14px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
 }
 
 main .project-card:hover .project-link-text {
-    color: #FFFFFF;
+    color: var(--text-color);
 }
 
 main .about-details {
@@ -287,13 +311,13 @@ main .about-block h3 {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #FFF;
+    color: var(--text-color);
 }
 
 main .about-block p {
     font-size: 15px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-secondary);
     margin: 0;
 }
 
@@ -339,7 +363,7 @@ footer .list-documents li {
 
 footer a {
     text-decoration: none;
-    color: #FFF;
+    color: var(--text-color);
 }
 
 a:hover { text-decoration: underline; }
@@ -347,6 +371,7 @@ a:hover { text-decoration: underline; }
 footer .contact h3 {
     text-align: center;
     margin-bottom: 24px;
+    color: var(--text-color);
 }
 
 footer .contact li {
@@ -356,12 +381,13 @@ footer .contact li {
 
 footer .contact li a {
     text-decoration: underline;
-    opacity: 0.5;
+    color: var(--text-secondary);
+    opacity: 0.9;
 }
 
 footer .rights {
     text-align: center;
     font-size: 12px;
-    color: var(--border);
-    opacity: 0.5;
+    color: var(--text-secondary);
+    opacity: 0.8;
 }
