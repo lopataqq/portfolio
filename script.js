@@ -7,12 +7,16 @@ burgerBtn?.addEventListener('click', function() { // при клике на кн
     mobileMenu.classList.toggle('open'); // переключение класса 'open' для мобильного меню
 });
 
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
 // блок переключения темы светлая-темная
 const themeBtn = document.getElementById('theme-toggle');
 const currentTheme = localStorage.getItem('theme');
 
-// Проверяем, была ли сохранена тема ранее
-if (currentTheme === 'dark') {
+// По умолчанию тёмная тема (телефон и компьютер); светлая только если пользователь сохранил выбор
+if (currentTheme !== 'light') {
     document.body.classList.add('dark-mode');
 }
 
