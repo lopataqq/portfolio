@@ -21,6 +21,8 @@ html {
     --card-bg: #f8f8f8;
     --card-hover: #eeeeee;
     --card-hover-border: rgba(0, 0, 0, 0.25);
+    --content-max-width: 1120px;
+    --content-padding: 100px;
 }
 
 body.dark-mode {
@@ -46,15 +48,20 @@ header {
     top: 0;
     left: 0;
     z-index: 100;
-    padding: 0 12px;
-    height: 70px;
     border-bottom: 1px solid var(--border);
     background: var(--bg-color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.header-inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    transition: background-color 0.3s, border-color 0.3s;
 }
 
 header .header-brand {
@@ -148,14 +155,71 @@ header .header-nav .tagurl {
     text-decoration: none;
 }
 
-.theme-btn {
-    background-color: var(--btn-bg);
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
+/* Ползунок переключения темы: таблетка в цветах сайта, иконка без круга */
+.theme-slider {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--card-bg);
     cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--text-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.theme-slider:hover {
+    background: var(--card-hover);
+    border-color: var(--card-hover-border);
+}
+
+.theme-slider-thumb {
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.theme-slider-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    position: absolute;
+}
+
+/* Светлая тема: солнце слева */
+.theme-slider-icon.icon-day {
+    display: block;
+}
+
+.theme-slider-icon.icon-moon {
+    display: none;
+}
+
+/* Тёмная тема: луна справа, иконки светлые */
+body.dark-mode .theme-slider-icon.icon-day {
+    display: none;
+}
+
+body.dark-mode .theme-slider-icon.icon-moon {
+    display: block;
+}
+
+body.dark-mode .theme-slider-icon {
+    filter: brightness(0) invert(1);
+}
+
+body.dark-mode .theme-slider-thumb {
+    transform: translateX(20px);
 }
 
 header .header-nav .tag:hover,
@@ -169,16 +233,24 @@ header .header-nav .tagurl:hover {
     header .header-nav { display: none; }
 }
 
-/* Shared main blocks */
+@media (max-width: 640px) {
+    :root {
+        --content-padding: 20px;
+    }
+}
+
+/* Shared main blocks — контент уже по ширине, как на референсе */
 main .main-block {
-    max-width: 1200px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
-    padding: 32px 12px 48px;
+    padding: 32px var(--content-padding) 48px;
 }
 
 main .certificates-section.main-block,
 main .projects-section.main-block {
     border-top: 1px solid var(--border);
+    margin-top: 24px;
+    padding-top: 32px;
 }
 
 main .section-title {
@@ -350,9 +422,9 @@ main .about-block p {
 }
 
 footer {
-    margin-top: 50px;
-    margin-bottom: 16px;
-    padding: 0 12px;
+    max-width: var(--content-max-width);
+    margin: 50px auto 16px;
+    padding: 0 var(--content-padding);
 }
 
 footer .footer-logo {
