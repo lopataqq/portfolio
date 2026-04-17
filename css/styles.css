@@ -86,6 +86,7 @@ header .header-nav {
 }
 
 header .menu-logo {
+    display: none;
     width: 32px;
     height: 32px;
     cursor: pointer;
@@ -229,8 +230,19 @@ header .header-nav .tagurl:hover {
     transform: translateY(-1px);
 }
 
+@media (min-width: 901px) {
+    header .mobile-menu {
+        display: none;
+    }
+}
+
 @media (max-width: 900px) {
-    header .header-nav { display: none; }
+    header .header-nav {
+        display: none;
+    }
+    header .menu-logo {
+        display: block;
+    }
 }
 
 @media (max-width: 640px) {
@@ -271,6 +283,20 @@ main .about-intro {
     line-height: 1.6;
     color: var(--text-secondary);
     margin-bottom: 32px;
+}
+
+main .skills-group + .skills-group {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+main .skills-group-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
 }
 
 main .skills-list {
@@ -423,8 +449,8 @@ main .about-block p {
 
 footer {
     max-width: var(--content-max-width);
-    margin: 50px auto 16px;
-    padding: 0 var(--content-padding);
+    margin: 50px auto 0;
+    padding: 0 var(--content-padding) max(32px, calc(12px + env(safe-area-inset-bottom, 0px)));
 }
 
 footer .footer-logo {

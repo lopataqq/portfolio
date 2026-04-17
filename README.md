@@ -1,4 +1,4 @@
-# My First Site
+# lopataqq Portfolio
 
 Простой HTML + CSS проект с моим портфолио
 
